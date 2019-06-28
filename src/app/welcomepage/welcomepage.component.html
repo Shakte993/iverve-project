@@ -1,0 +1,58 @@
+
+<mat-card class="example-card">
+    <mat-card-header>
+     <mat-card-title> Welcome,   </mat-card-title>
+     <div mat-card-avatar class="example-header-image"></div>
+
+        <mat-card-subtitle> <h3> <i>{{firstname}} {{lastname}} </i> </h3> <hr> </mat-card-subtitle>
+        <mat-divider> </mat-divider>
+      </mat-card-header>
+      <mat-card-content>
+<div class="container">
+    
+   <table>  
+<tr> 
+<td> <label>Email id :-  {{emailid}} </label> </td> </tr>
+<tr> <td> <label>Name :- {{firstname}} {{lastname}} </label> </td></tr>
+<tr>
+<td> <label> Date of Birth :- {{DOB}} </label> </td> </tr>
+<tr>
+<td> <label> Age :- {{age}} </label> </td>  </tr>
+<tr>
+<td> <label> Gender :- {{gender}} </label> </td> </tr>
+<tr>
+<td> <label> Height :- {{feet}}'.{{inches}}"  </label> </td> </tr>
+<tr>
+<td> <label>Weight :- {{weight}} kg </label> </td> </tr>
+<tr>
+<td> <label> Distance Unit :- {{distanceunit}} </label> </td> </tr>
+<tr>
+<td>  <label> Calorie Unit :- {{calorieunit}} </label> </td> </tr>
+
+<tr> <td> <label> Meal Type :- {{mealtype}}  </label></td> </tr>
+
+ <tr><td> <label> Country ID :- {{countryid}} </label> </td> </tr>
+
+<tr><td> <label>  Country Name :- {{countryname}} </label> </td>
+</tr>
+
+
+<tr>
+        <mat-card-actions>
+   <td> 
+       <button class="btn btn-success " [routerLink]="(['/update'])"> Update  </button> 
+</td>
+
+<td class="spaceclass">
+    <button class="btn btn-success spaceclass" (click)="logoutMethod()"> Log out </button>  </td>
+    
+
+<td class="spaceclass">
+    <button class="btn btn-success spaceclass" [routerLink] = "(['/changepassword'])" > Change Password </button> </td>
+
+</mat-card-actions>
+</tr>
+</table>
+</div>
+</mat-card-content>
+</mat-card>

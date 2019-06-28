@@ -1,0 +1,49 @@
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+
+/* * 
+{
+    border: 1px solid black;
+} */
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.example-card {
+  max-width: 400px;
+  max-height: 80%;
+  background-color: cadetblue;
+  margin-left: 30%;
+  margin-top: 10%;
+  color: aliceblue;
+  
+}
+
+.form-control {
+    width: 100%;
+
+}
+.form-group label{max-width: 200px}
+.container
+{
+   color: aliceblue;
+   margin-left: 20%;
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+    
+  .ng-dirty:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }
+  .ng-touched:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }
+
+  .Fradiobutton{
+
+    margin-left: 10%;
+  }
+ 

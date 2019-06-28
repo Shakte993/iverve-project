@@ -1,0 +1,26 @@
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+
+
+.example-card {
+    max-width: 400px;
+    max-height: 80%;
+    background-color: cadetblue;
+    margin-left: 30%;
+    margin-top: 10%;
+    color: aliceblue;
+  }
+
+  .example-header-image {
+    background-image: url('https://www.gstatic.com/webp/gallery3/1.png');
+    background-size: cover;
+  }
+
+  .container 
+  {
+
+    color: white;
+  }
+  .spaceclass
+  {
+    margin-left: 20px;
+  }

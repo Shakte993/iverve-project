@@ -1,0 +1,156 @@
+
+ 
+ <mat-card class="example-card"> 
+   <mat-card-header> 
+      <mat-card-title> <h3> <i> Registration Page </i> </h3> </mat-card-title>  
+    <div mat-card-avatar class="example-header-image"> </div>
+      
+  </mat-card-header> <br> <br>
+   <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+   
+   <mat-card-content> 
+
+      <div class="container" >
+      <form #newForm="ngForm"> 
+      
+        <!-- <div class="form-group">
+            <label> Enter FirstName <input type="text" class="form-control" name="firstname" [(ngModel)]="firstname" #fname = 'ngModel'  required minlength="4" #firstnameref >
+    
+    <div *ngIf="fname.errors?.minlength"> Name should have atleast 4 characters </div>
+
+    <div *ngIf="fname.invalid && (fname.dirty || fname.touched)"
+    class="alert alert-danger"> 
+    Name is required.
+  </div>
+      
+</label> 
+</div> -->
+
+    <!-- <div class="form-group">
+      <label for="lastname"> Enter lastName
+        <input name="lastname" class="form-control" [(ngModel)]="lastname" #lname= "ngModel" required minlength="3">  
+  
+        <div *ngIf="lname.errors?.minlength"> Last Name should have atleast 3 characters </div>
+
+        <div *ngIf="lname.invalid && (lname.dirty || lname.touched)"
+        class="alert alert-danger"> 
+        Name is required.
+      </div>
+      </label> 
+    </div> -->
+
+    <div class="form-group">
+      <label  > Enter EmailID 
+    <div> 
+      <input type="email" name="emailId" class="form-control" pattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="emailId"  #newemail="ngModel"  required>
+    </div>
+ 
+    <div *ngIf="newemail.invalid && (newemail.dirty||newemail.touched)"
+        class="alert alert-danger"> 
+        
+        <div *ngIf="newemail.errors?.pattern"> 
+            Official Email not valid.
+         </div> 
+        
+         Email is required.
+      </div>
+     
+      </label> 
+    </div>
+  
+  <div class="form-group">
+  <label for="password"> Enter new Pasword
+    <div>
+    <input type="password" name="password" class="form-control" [(ngModel)]="password"  pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" #pass="ngModel" #passwordref required>  
+   
+  </div>
+    <p> {{passwordref.value}}</p>
+  <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="aler alert-danger"> 
+    <div *ngIf="pass.errors?.pattern">
+      Password must contain uppercase, lowercase , number and special characters with min 8 characters </div>
+    Password is required.
+  </div>
+
+  </label>  
+  </div>
+
+  <div class="form-group">
+    <label for="confirmpassword"> Confirm new Password
+    <div>
+      <input type="password" name="confirmpassword" class="form-control" [(ngModel)]="confirmpassword" #cpass="ngModel"  pattern = "{{ passwordref.value }}"  #cpassword required>
+          </div>
+    <div *ngIf="cpass.invalid && (cpass.dirty || cpass.touched)" class="alert alert-danger"> 
+     <div *ngIf="cpass.errors?.pattern"> Password not matched </div>
+
+     value required 
+    </div>
+    </label> 
+    </div>
+
+  <!-- <div class="form-group">
+    <label for="phone">Enter Your contact Number 
+      <div>
+        <input type="text" name="phone" class="form-control" pattern="^[6-9]{1}[0-9]{9}$" [(ngModel)]="phone" #contactno="ngModel" required> 
+        </div>
+        <div *ngIf="contactno.invalid && (contactno.dirty || contactno.touched)" class="alert alert-danger">
+          <div *ngIf="contactno.errors?.pattern">
+            Should be valid and  10 digit long (first number between 6-9)
+            </div>
+          Contact is required
+        </div>
+      </label>
+  </div>
+
+    <div class="form-group"> 
+<label for="address"> Enter Address  
+<textarea class="form-control" name="address" [(ngModel)]="address" #addressview='ngModel' required> </textarea>
+<div *ngIf="addressview.invalid && (addressview.dirty || addressview.touched)" class="alert alert-danger">
+
+  Address required  
+</div>
+</label>
+
+    </div>
+      
+    
+
+    <div class="form-group">
+      <label for="phone">Enter Your contact Number 
+        <div>
+          <input type="text" name="phone" class="form-control" pattern="^[6-9]{1}[0-9]{9}$" [(ngModel)]="phone" #contactno="ngModel" required> 
+          </div>
+          <div *ngIf="contactno.invalid && (contactno.dirty || contactno.touched)" class="alert alert-danger">
+            <div *ngIf="contactno.errors?.pattern">
+              Should be valid and  10 digit long (first number between 6-9)
+              </div>
+            Contact is required
+          </div>
+        </label>
+    </div>
+
+    <div class="form-group">
+      <label for="image"> Select Image 
+        <div> 
+          <input type="file" change="uploadImage($event)" name="image" class="form-control" [(ngModel)]="image" #selectedimage="ngModel" required> 
+        </div>
+
+        <div *ngIf="selectedimage.invalid && (selectedimage.dirty || selectedimage.touched)" class="alert alert-danger">
+          Image is required.
+        
+        </div>
+        
+       </label>
+   
+    </div> -->
+<mat-card-actions>
+    <button type="submit" class="btn btn-success" [disabled]="!newForm.form.valid" (click)="newPage(); newForm.reset()"> Register </button>
+    <button style="margin-left: 20px;" type="submit" class="btn btn-success" [routerLink]="['/signin']"> Sign In </button>
+    </mat-card-actions>
+  </form>
+  
+</div>
+</mat-card-content>
+ </mat-card>
+
+
+
