@@ -1,0 +1,392 @@
+
+<mat-card class="example-card">
+    <mat-card-header>
+     <mat-card-title>  <b> <i>Update Profile </i> </b>   </mat-card-title>
+ </mat-card-header>
+
+ <form #updatedata="ngForm">  
+<table mat-table>
+  <tr mat-row > 
+      <div class="container">
+          <!-- <mat-text-column name="score">  -->
+        <!-- <ng-container matColumn="id">
+          <td mat-cell>   
+          <div class="form-group">
+          <label for="userid"> Id :
+            <div>
+            <input type="text" class="form-control" name="userId"  #idno='ngModel' [(ngModel)]="li.userId" required disabled>  </div>
+            <div *ngIf="idno.invalid && (idno.dirty || idno.touched)" class="alert alert-danger "> Can not be blank 
+            </div>
+            </label>
+          </div>
+          </td>
+      </ng-container> -->
+        <!-- </mat-text-column>  -->
+      <!-- <mat-text-column>  -->
+                
+  <ng-container matColumn="email id"> 
+     <td mat-cell aria-colspan="2" >
+        <div class="form-group spaceclass ">
+        <label for="emailId"> Email ID 
+        <div>
+          <input type="email" class="form-control" name="emailId" pattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="li.emailId"  #email="ngModel"  required> 
+          </div>
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger"> 
+          <div *ngIf="email.errors?.pattern"> 
+          Official Email not valid.
+          </div>
+          Email is required.
+          </div>
+          </label>  
+          </div>
+      </td>
+    </ng-container>
+      </div>
+  </tr>
+
+    <tr mat-row> 
+        <div class="container">
+      <ng-container matColumn="FirstName"> 
+        <td mat-cell> 
+            <div class="form-group"> 
+                <label for="FirstName"> First Name
+                  <div>
+                    <input type="text" class="form-control" name="FirstName" [(ngModel)]="li.FirstName" #fname='ngModel'  minlength="3"  required>
+                  </div>
+                   <div *ngIf="fname.invalid && (fname.dirty || fname.touched)" class="alert alert-danger"> 
+                   <div *ngIf="fname.errors?.minlength" > Name should have atleast 4 characters </div>
+                    Name can not be blank </div>
+                    </label> 
+              </div>
+            </td>
+      </ng-container>
+      <td mat-cell> </td>
+      <td mat-cell> </td>
+      <ng-container matColumn="LastName"> 
+        <td mat-cell> 
+          <div class="form-group spaceclass">
+              <label for="LastName"> Last Name
+                <div>
+                 <input type="text" class="form-control" name="LastName" #lname='ngModel' [(ngModel)]="li.LastName" minlength="3" required> 
+                  </div>
+                  <div *ngIf="lname.errors?.minlength"> Last Name should have atleast 3 characters </div>
+                  <div *ngIf="lname.invalid && (lname.dirty || lname.touched)"
+                    class="alert alert-danger"> 
+                  Last Name cannot be blank
+                  </div>
+                 </label>  
+              </div>
+         </td>
+    </ng-container>
+        </div>
+    </tr>
+
+  <tr mat-row> 
+      <div class="container"> 
+    <ng-contianer matColumn="DOB"> 
+      <td mat-cell> 
+          <div class="form-group ">
+              <label for="Birthday"> Birthday
+                  <div>
+                   <input type="date" [value]="dateformat" [max]="getToday()" style="width: 88%" class="form-control" name="dateformat" [(ngModel)]="dateformat" (change)="datechangeMethod()" required> </div>
+                   <!-- <div *ngIf="bday.invalid && (bday.dirty || bday.touched)" class="alert alert-danger">
+                      Date is required
+                    </div> -->
+                    </label>  
+           </div>
+      </td>
+    </ng-contianer>
+    
+    <ng-contianer matColumn="Age"> 
+        <td mat-cell > 
+            <div class="form-group spaceclass"> 
+            <label for="Age"> Age Is
+             <div>
+              <input type="text"  class="form-control" name="Age" [(ngModel)]="li.Age" #age="ngModel" required> </div>
+                <div *ngIf="age.invalid && (age.dirty || age.touched)" class="alert alert-danger">
+                 Date is required
+                 </div>
+              </label>  
+            </div> 
+        </td>
+      </ng-contianer>
+      </div>
+    </tr>
+
+
+<tr mat-row> 
+    <div class="container">
+    <ng-contianer matColumn="gender"> 
+      <td mat-cell> 
+          <div class="radio" style="margin-left: 10px">
+              <label>
+                 <input type="radio" name="Gender"  value= "0" [(ngModel)]="li.Gender" >  Male </label>
+                
+                 <label style="margin-left: 30px">  
+                <input type="radio" name="Gender" value= "1" [(ngModel)]="li.Gender" >Female </label>
+            </div>
+      </td>
+    </ng-contianer>
+
+    <ng-contianer matColumn="Height"> 
+        <td mat-cell> 
+            <div class="form-group spaceclass"> 
+                <label for="Feet" style="margin-left: 40px"> Enter height in Feets :
+                  <input type="number" class="form-control" name="Feet" [(ngModel)]="li.Feet" #feet='ngModel' required>
+                   <div *ngIf="feet.invalid && (feet.dirty || feet.touched)" class="alert alert-danger"> Can not be blank </div>
+                   </label>
+          </div>
+        </td>
+      </ng-contianer>
+    </div>
+</tr>
+
+<tr mat-row> 
+    <div class="container">
+    <ng-contianer matColumn="InchHeight"> 
+      <td mat-cell> 
+          <div class="form-group"> 
+              <label for="Inch"> Enter height in inches :
+                <input type="number" class="form-control" name="Inch" [(ngModel)]="li.Inch" #inch='ngModel' required>
+                <div *ngIf="inch.invalid && (inch.dirty || inch.touched)" class="alert alert-danger"> Can not be blank </div>
+              </label>
+             </div>
+      </td>
+    </ng-contianer>
+
+    <ng-contianer matColumn="Weight"> 
+        <td mat-cell> 
+            <div class="form-group spaceclass"> 
+                <label for="Weight"> Enter weight in KG :
+                  <input type="text" class="form-control" name="Weight" [(ngModel)]="li.Weight" #weight='ngModel' required>
+                  <div *ngIf="weight.invalid && (weight.dirty || weight.touched)" class="alert alert-danger"> Can not be blank </div>
+                </label>
+            </div>
+        </td>
+      </ng-contianer>
+    </div>
+</tr>
+
+
+
+<tr mat-row> 
+    <div class="container">
+    <ng-contianer matColumn="DistanceUnit"> 
+      <td mat-cell> 
+          <div class="form-group">
+              <label for="distanceUnit"> Enter Distance in KM 
+                <div> <input type="number" class="form-control" name="distanceUnit" [(ngModel)]="li.distanceUnit" #disunit='ngModel'  required> </div>
+                <div *ngIf="disunit.invalid && (disunit.dirty || disunit.touched)" class="alert alert-danger"> Can not be blank </div>
+              </label>  
+              </div>
+
+      </td>
+    </ng-contianer>
+
+    <ng-contianer matColumn="CaloriesUnit"> 
+        <td mat-cell> 
+            <div class="form-group spaceclass">
+                <label for="caloryUnit"> Enter Calories Unit 
+                  <div> <input type="number" class="form-control" name="caloryUnit" [(ngModel)]="li.caloryUnit" #calunit='ngModel' required> </div>
+                  <div *ngIf="calunit.invalid && (calunit.dirty || calunit.touched)" class="alert alert-danger"> Can not be blank </div>
+                </label>  
+            </div>
+        </td>
+      </ng-contianer>
+    </div>
+</tr>
+
+
+<tr mat-row> 
+    <div class="container">
+    <ng-contianer matColumn="mealType"> 
+      <td mat-cell> 
+          <div class="form-group">
+              <label for="mealType"> Enter Meal Type
+                <div> <input type="text" class="form-control" name="mealType" [(ngModel)]="li.mealType" #mealtype='ngModel' required> </div>
+                <div *ngIf="mealtype.invalid && (mealtype.dirty || mealtype.touched)" class="alert alert-danger"> Can not be blank </div>
+              </label>  
+          </div>
+      </td>
+    </ng-contianer>
+
+    <ng-contianer matColumn="countryName"> 
+        <td mat-cell> 
+            <div class="form-group spaceclass">
+                <label for="countryName">Country name:
+                   <select  style="width: 100%;" class="form-control" id="sel1" name="countryName" >
+                      <option [value]="li.countryId"> {{li.countryName}}</option>  
+                   </select>
+                    </label>      
+                  </div>
+        </td>
+      </ng-contianer>
+    </div>
+</tr>
+
+<tr mat-row> 
+    <div class="container">
+  <ng-container> 
+    <td mat-cell> 
+        <button type="submit" class="btn btn-success" (click)="updateProfile()">Update </button> 
+    </td>
+  </ng-container>
+
+    <ng-container> 
+      <td mat-cell> 
+          <label> <button type="submit" class="btn btn-success spaceclass"  [routerLink]="['/welcomepage']"> Cancel </button> </label>
+     </td>
+    </ng-container>
+    </div>
+  </tr>
+
+</table>
+</form>
+</mat-card>
+
+
+<!-- 
+  <div class="container">
+    <button type="button" [routerLink]="['/welcomepage']" class="btn btn-success"> Go to Welcome Page </button>
+      <form #updatedata="ngForm"> 
+        <div class="form-group">
+        <label for="userid"> Id :
+          <div>
+          <input type="text" class="form-control" name="userId"  #idno='ngModel' [(ngModel)]="li.userId" required disabled>  </div>
+         <div *ngIf="idno.invalid && (idno.dirty || idno.touched)" class="alert alert-danger "> Can not be blank 
+         </div>
+          </label>
+</div>
+<div class="form-group">
+            <label for="emailId"> Email ID 
+              <div>
+              <input type="email" class="form-control" name="emailId" pattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="li.emailId"  #email="ngModel"  required> 
+              </div>
+              <div *ngIf="email.invalid && (email.dirty || email.touched)"
+               class="alert alert-danger"> 
+              <div *ngIf="email.errors?.pattern"> 
+                Official Email not valid.
+              </div>
+                Email is required.
+              </div>
+              </label>  
+   </div>
+
+    <div class="form-group"> 
+        <label for="FirstName"> First Name
+          <div>
+            <input type="text" class="form-control" name="FirstName" [(ngModel)]="li.FirstName" #fname='ngModel'  minlength="3"  required>
+          </div>
+           <div *ngIf="fname.invalid && (fname.dirty || fname.touched)" class="alert alert-danger"> 
+           <div *ngIf="fname.errors?.minlength" > Name should have atleast 4 characters </div>
+            Name can not be blank </div>
+            </label> 
+      </div>
+    
+     <div class="form-group">
+          <label for="LastName"> Last Name
+            <div>
+             <input type="text" class="form-control" name="LastName" #lname='ngModel' [(ngModel)]="li.LastName" minlength="3" required> 
+              </div>
+              <div *ngIf="lname.errors?.minlength"> Last Name should have atleast 3 characters </div>
+              <div *ngIf="lname.invalid && (lname.dirty || lname.touched)"
+                class="alert alert-danger"> 
+              Last Name cannot be blank
+              </div>
+             </label>  
+     </div>
+    
+     <div class="form-group">
+        <label for="Birthday"> Birthday
+            <div>
+             <input type="date"  [value]="dateformat"  class="form-control" name="dateformat" [(ngModel)]="dateformat"  required> </div> -->
+             <!-- <div *ngIf="bday.invalid && (bday.dirty || bday.touched)" class="alert alert-danger">
+                Date is required
+              </div> -->
+              <!-- </label>  
+     </div>
+ 
+     <div class="form-group"> 
+         <label for="Age"> Age Is
+          <div>
+           <input type="text" class="form-control" name="Age" [(ngModel)]="li.Age" #age="ngModel" required> </div>
+             <div *ngIf="age.invalid && (age.dirty || age.touched)" class="alert alert-danger">
+              Date is required
+              </div>
+           </label>  
+            </div>
+ 
+     <div class="radio">
+        <label>
+           <input type="radio" name="Gender"  value= "0" [(ngModel)]="li.Gender" >  Male </label>
+          </div>
+      <div class="radio">
+          <label>  
+          <input type="radio" name="Gender" value= "1" [(ngModel)]="li.Gender" >Female </label>
+      </div>
+
+       <div class="form-group"> 
+               <label for="Feet"> Enter height in Feets :
+                 <input type="number" class="form-control" name="Feet" [(ngModel)]="li.Feet" #feet='ngModel' required>
+                  <div *ngIf="feet.invalid && (feet.dirty || feet.touched)" class="alert alert-danger"> Can not be blank </div>
+                  </label>
+         </div>
+
+                     <div class="form-group"> 
+                        <label for="Inch"> Enter height in inches :
+                          <input type="number" class="form-control" name="Inch" [(ngModel)]="li.Inch" #inch='ngModel' required>
+                          <div *ngIf="inch.invalid && (inch.dirty || inch.touched)" class="alert alert-danger"> Can not be blank </div>
+                        </label>
+                       </div>
+
+                       <div class="form-group"> 
+                          <label for="Weight"> Enter weight in KG :
+                            <input type="text" class="form-control" name="Weight" [(ngModel)]="li.Weight" #weight='ngModel' required>
+                            <div *ngIf="weight.invalid && (weight.dirty || weight.touched)" class="alert alert-danger"> Can not be blank </div>
+                          </label>
+                      </div>
+
+                      <div class="form-group">
+                      <label for="distanceUnit"> Enter Distance in KM 
+                        <div> <input type="number" class="form-control" name="distanceUnit" [(ngModel)]="li.distanceUnit" #disunit='ngModel'  required> </div>
+                        <div *ngIf="disunit.invalid && (disunit.dirty || disunit.touched)" class="alert alert-danger"> Can not be blank </div>
+                      </label>  
+                      </div>
+
+                      <div class="form-group">
+                          <label for="caloryUnit"> Enter Calories Unit 
+                            <div> <input type="number" class="form-control" name="caloryUnit" [(ngModel)]="li.caloryUnit" #calunit='ngModel' required> </div>
+                            <div *ngIf="calunit.invalid && (calunit.dirty || calunit.touched)" class="alert alert-danger"> Can not be blank </div>
+                          </label>  
+                      </div>
+                      
+                      <div class="form-group">
+                          <label for="mealType"> Enter Meal Type
+                            <div> <input type="text" class="form-control" name="mealType" [(ngModel)]="li.mealType" #mealtype='ngModel' required> </div>
+                            <div *ngIf="mealtype.invalid && (mealtype.dirty || mealtype.touched)" class="alert alert-danger"> Can not be blank </div>
+                          </label>  
+                      </div>
+                  
+                    <div class="form-group">
+                      <label for="countryName">Country name:
+                         <select  style="width: 100%;" class="form-control" id="sel1" name="countryName" >
+                            <option [value]="li.countryId"> {{li.countryName}}</option>   -->
+                          <!-- <option [value]="1"> </option> -->
+                            <!-- <option value="2"> USA </option>
+                            <option value="3">Dubai</option>
+                            <option value="4">England</option> -->
+                          <!-- </select> -->
+                          <!-- <div *ngIf="country.invalid && (country.dirty || country.touched)" class="alert alert-danger"> Can not be blank </div> -->
+                        <!-- </label>      
+                  </div>
+                     <button type="submit" class="btn btn-success" (click)="updateProfile()">Update </button> 
+                     <label> <button type="submit" class="btn btn-success"  [routerLink]="['/welcomepage']"> Cancel </button> </label>
+                         
+    
+      </form>
+      </div>
+      </mat-card> -->
+    
+
+
+
