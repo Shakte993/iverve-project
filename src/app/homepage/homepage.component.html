@@ -1,0 +1,19 @@
+<p>
+  homepage works!
+</p>
+
+<mat-list>
+  <mat-list-item>Item 1</mat-list-item>
+  <mat-divider></mat-divider>
+  </mat-list>
+
+<p>
+  <button  routerLink="/home"> Home </button> <br>
+  <button  *ngIf="auth.isLoggedIn()" routerLink="/register"> Register</button> <br>
+  
+  <!-- <button  *ngIf="!auth.isLoggedIn()" routerLink="/register">Register</button> <br> -->
+  
+  <button routerLink ="/login"> Login </button> <br>
+
+  <!-- <button  *ngIf="auth.isLoggedIn()" (click)="auth.logout()">Logout</button><br> -->
+</p>

@@ -1,0 +1,46 @@
+<h2>
+   Hello Welcome Page
+</h2>
+<br>
+
+<!-- <button  *ngIf="auth.isLoggedIn()" (click)="auth.logout()">Logout</button><br> -->
+<button type="button" class="btn btn-success" [routerLink]="['/dashboard']"> dashboard </button>
+
+<button type="button" class="btn btn-success" [routerLink]="['/register']"> Back </button>
+
+<table>
+
+<tr> 
+    <th> ID </th>
+  <th> First Name </th>
+  <th> Last Name</th>
+  <th> Email ID</th>
+  <th> Contact No</th>
+  
+  <th>  </th>
+  <th>  </th>
+  
+  <th>  </th> </tr>
+
+      
+<tr *ngFor="let li of list">
+  
+    <td>{{li.id}} </td>
+
+  <td>{{li.firstName}} </td>
+
+  <td>{{li.lastName}} </td>
+  
+  <td>{{li.emailid}} </td>
+  
+  <td>{{li.contact}} </td>
+    <td>  </td>
+
+  <td (click)="deletecustomer(li.id)" style="cursor: pointer;"> <a> DELETE </a> </td>
+ 
+  <td>  </td>
+      <td [routerLink] = "['/update', li.id]" style="cursor: pointer;"><a>UPDATE</a></td>
+  </tr>
+  </table>
+
+  

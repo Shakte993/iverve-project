@@ -1,0 +1,182 @@
+
+
+<h3>
+  New Form Page
+</h3>
+<input  type="file" accept='image/*' (change)="preview($event)" />
+
+<img [src]="imgURL" height="200" *ngIf="imgURL">
+
+
+<div class="container">
+
+    {{debug}}
+
+  <form #newForm="ngForm"> 
+      
+
+      <div class="form-group">
+          <label> Enter ID 
+          <input type="text" class="form-control" name="id" [(ngModel)]="id" #idref = 'ngModel'  required  >
+          
+               
+          <div *ngIf="idref.invalid && (idref.dirty || idref.touched)"
+          class="alert alert-danger"> 
+         id is required.
+        </div>
+      </label>  
+      </div>
+
+
+
+  <div class="form-group">
+    <label> Enter FirstName <input type="text" class="form-control" name="firstName" [(ngModel)]="firstName" #fname = 'ngModel'  required minlength="4" #firstnameref >
+    
+    <div *ngIf="fname.errors?.minlength"> Name should have atleast 4 characters </div>
+
+    <div *ngIf="fname.invalid && (fname.dirty || fname.touched)"
+    class="alert alert-danger"> 
+    Name is required.
+  </div>
+  
+    
+</label> 
+</div>
+
+    <div class="form-group">
+      <label for="lastName"> Enter lastName
+        <input name="lastName" class="form-control" [(ngModel)]="lastName" #lname= "ngModel" required minlength="3">  
+  
+        <div *ngIf="lname.errors?.minlength"> Last Name should have atleast 3 characters </div>
+
+        <div *ngIf="lname.invalid && (lname.dirty || lname.touched)"
+        class="alert alert-danger"> 
+        Name is required.
+      </div>
+      </label> 
+    </div>
+
+    <div class="form-group"> 
+<label for="address"> Enter Address  
+<textarea class="form-control" name="address" [(ngModel)]="address" #addressview='ngModel' required> </textarea>
+<div *ngIf="addressview.invalid && (addressview.dirty || addressview.touched)" class="alert alert-danger">
+
+  Address required  
+</div>
+</label>
+
+    </div>
+
+    <div class="form-group">
+       <div class="radio">
+      <label> <input type="radio"  name="commonradio" [(ngModel)]="commonradio" checked> Male </label>
+      <label  class="Fradiobutton"> <input type="radio"  name ="commonradio" > Female</label> 
+    </div>
+  </div>
+    
+    
+    <div class="form-group">
+      <label  > Enter EmailID 
+    <div> 
+      <input type="email" name="emailid" class="form-control" pattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="emailid"  #email="ngModel"  required>
+    </div>
+ 
+    <div *ngIf="email.invalid && (email.dirty||email.touched)"
+        class="alert alert-danger"> 
+        
+        <div *ngIf="email.errors?.pattern"> 
+            Official Email not valid.
+         </div> 
+        
+         Email is required.
+      </div>
+     
+      </label> 
+    </div>
+
+    <div class="form-group">
+      <label for="contact">Enter Your contact Number 
+        <div>
+          <input type="text" name="contact" class="form-control" pattern="^[6-9]{1}[0-9]{9}$" [(ngModel)]="contact" #contactno="ngModel" required> 
+          </div>
+          <div *ngIf="contactno.invalid && (contactno.dirty || contactno.touched)" class="alert alert-danger">
+            <div *ngIf="contactno.errors?.pattern">
+              Should be valid and  10 digit long (first number between 6-9)
+              </div>
+            Contact is required
+          </div>
+        </label>
+    </div>
+
+    <div class="form-group">
+      <label for="image"> Select image 
+        <div> 
+          <input type="file" change="uploadImage($event)" name="image" class="form-control" [(ngModel)]="image" #selectedimage="ngModel" required> 
+        </div>
+
+        <div *ngIf="selectedimage.invalid && (selectedimage.dirty || selectedimage.touched)" class="alert alert-danger">
+          Image is required.
+        
+        </div>
+        
+       </label>
+    
+    </div>
+
+    <div class="form-group">
+    <label for="passwod"> Enter new Pasword
+      <div>
+      <input type="password" name="password" class="form-control" [(ngModel)]="password"  pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" #pass="ngModel" #passwordref required>  
+     
+    </div>
+      <p> {{passwordref.value}}</p>
+    <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="aler alert-danger"> 
+      <div *ngIf="pass.errors?.pattern">
+        Password must contain uppercase, lowercase , number and special characters with min 8 characters </div>
+      Password is required.
+    </div>
+
+    </label>  
+    </div>
+
+    <div class="form-group">
+      <label for="confirmpassword"> Confirm new Password
+      <div>
+        <input type="password" name="confirmpassword" class="form-control" [(ngModel)]="confirmpassword" #cpass="ngModel"  pattern = "{{ passwordref.value }}"  #cpassword required>
+
+        <!-- <input type="password" name="confirmpassword" class="form-control" [(ngModel)]="confirmpassword" #cpass="ngModel"   #cpassword required> -->
+      </div>
+      <div *ngIf="cpass.invalid && (cpass.dirty || cpass.touched)" class="alert alert-danger"> 
+       <div *ngIf="cpass.errors?.pattern"> Password not matched </div>
+
+       value required 
+
+      </div>
+     
+      <!-- <div *ngIf="cpassword.value == passwordref.value ? matched : {notsame : true} "> </div> -->
+      </label>
+     
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!newForm.form.valid" (click)="newPage(); newForm.reset()"> Register </button>
+
+    <button style="margin-left: 20px;" type="submit" class="btn btn-success" [routerLink]="['/login']"> SignIn </button>
+    
+  </form>
+  
+</div>
+<button (click)="welcome()">Check all records </button>
+
+<div [ngStyle]="{'color':'red'}">Hello</div>
+
+<!-- <input #file type="file" accept='image/*' (change)="preview(file.file)" /> -->
+
+
+<!-- <img [src]="imgURL" height="200" *ngIf="imgURL"> -->
+
+
+<!-- <input
+  style="display: none"
+  type="file" (change)="onFileChanged($event)"
+  #fileInput>
+<button (click)="fileInput.click()">Select File</button> -->
